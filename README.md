@@ -9,7 +9,12 @@ where the vector information is created in our MicroVBA interpreter by executing
 is a subset of VBA for PowerPoint. This language bypasses the weaknesses of the EMF format (the lack of
 gradient being the most handicapping) and of VBA itself (limitations on the size of functions) in order to import
 complete vector files from Java programs to PowerPoint.
-The program that transforms the Java information to MicroVBA is a modification of FreeHEP library. As
+The program in this repository transforms the Java information to MicroVBA is a modification of FreeHEP library. As
 mentioned in Part 1, it uses an independent graphics superclass that writes the MicroVBA instructions into a
 file. The user triggers the conversion by clicking on a bar on the top of the screen.
-A PowerPoint presentation that mocks the converted interface can be found [here](https://github.com/nilostolte/MicroVBA-PowerPoint/blob/main/Example/testfontsembedded.pptm)
+A PowerPoint presentation that mocks the converted interface can be found 
+[here](https://github.com/nilostolte/MicroVBA-PowerPoint/blob/main/Example/testfontsembedded.pptm).
+
+In this source code we used our [MenuInfographics6](https://github.com/nilostolte/Java-Vector-GUI/tree/main/MenuInfographics6) example.
+Any class extending JPanel that displays vector graphics can be used here instead of 
+[MenuInfographics6.java](https://github.com/nilostolte/Java-Vector-GUI/blob/main/MenuInfographics6/src/com/MenuInfographics6.java).
