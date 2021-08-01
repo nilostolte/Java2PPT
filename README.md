@@ -37,5 +37,11 @@ line 8497, shown below, should be changed with the correct path of the output fi
 /outfile1 (D:\\Programming\\PostScript\\Convertion to Java\\Fonts\\Ubuntu text.java) (w) file def
 ```
 
-To make this program work on Windows one should have GhostScript installed and a shortcut created to call GhostScript with the file **Ubuntu kerning java.ps**. This
-is indicated [here](https://github.com/nilostolte/PostScript/tree/main/Examples/Convertion%20to%20Java#using-windows-shortcuts-to-call-ghostscript).
+To make this program work on Windows one should have GhostScript installed and a shortcut created to call GhostScript with the file 
+[**Ubuntu kerning java.ps**](https://github.com/nilostolte/Java2PPT/blob/main/PostScript/Ubuntu%20kerning%20java.ps).
+Instructions to create this shortcut are given 
+[here](https://github.com/nilostolte/PostScript/tree/main/Examples/Convertion%20to%20Java#using-windows-shortcuts-to-call-ghostscript). File
+[**Ubuntu kerning java.ps**](https://github.com/nilostolte/Java2PPT/blob/main/PostScript/Ubuntu%20kerning%20java.ps)
+contains the fonts **Ubuntu** and **Ubuntu-Bold**, BreakIntoLines function with kerning features, as well as commands to transform the text into Java. 
+Ubuntu-Bold was the font chosen to be used in the buttons. BreakIntoLines was not actually used to generate paragraphs but just because the kerning 
+heuristic is used with it.
