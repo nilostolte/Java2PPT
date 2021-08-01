@@ -11,11 +11,9 @@ gradient being the most handicapping) and of VBA itself (limitations on the size
 complete vector files from Java programs to PowerPoint.
 The program in this repository transforms the Java information to MicroVBA is a modification of FreeHEP library. It 
 uses an independent graphics superclass that writes the MicroVBA instructions into a
-file. The user triggers the conversion by clicking on a bar on the top of the screen.
-A PowerPoint presentation that mocks the converted interface can be found 
-[here](https://github.com/nilostolte/MicroVBA-PowerPoint/blob/main/Example/testfontsembedded.pptm).
+file. The user triggers the conversion by clicking on a button on the right of the screen with the text "Transform to MicroVBA".
 
-In this source code we used our [MenuInfographics6](https://github.com/nilostolte/Java-Vector-GUI/tree/main/MenuInfographics6) example.
+In this program [MenuInfographics6](https://github.com/nilostolte/Java-Vector-GUI/tree/main/MenuInfographics6) example was used.
 Any class extending JPanel that displays vector graphics can be used here instead of 
 [MenuInfographics6.java](https://github.com/nilostolte/Java-Vector-GUI/blob/main/MenuInfographics6/src/com/MenuInfographics6.java).
 
@@ -45,3 +43,6 @@ Instructions to create this shortcut are given
 contains the fonts **Ubuntu** and **Ubuntu-Bold**, BreakIntoLines function with kerning features, as well as commands to transform the text into Java. 
 Ubuntu-Bold was the font chosen to be used in the buttons. BreakIntoLines was not actually used to generate paragraphs but just because the kerning 
 heuristic is used with it.
+
+A PowerPoint presentation that mocks the converted interface can be found 
+[here](https://github.com/nilostolte/MicroVBA-PowerPoint/blob/main/Example/testfontsembedded.pptm).
