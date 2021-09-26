@@ -1,6 +1,5 @@
 package com;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -68,7 +67,11 @@ public class Window  extends JFrame {
 	   Component myself;
 	   boolean nobardisplay;
 	   
-	   private class MyPanel extends MenuInfographics6 {
+	   private interface ThreadFunction {
+		   void execute();
+	   }
+	   
+	   private class MyPanel extends MenuInfographics6 implements Runnable {
 		   private int clicked = -1;
 		   private Color darkLeadBlue = new Color(55, 77, 100);
 		   private Color lightLeadBlue = new Color(180, 190, 200);
@@ -76,6 +79,47 @@ public class Window  extends JFrame {
 		   private GradientPaint g1 = new GradientPaint(0f, 10f, Color.white, 0f, 40f, lightLeadBlue);
 		   private GradientPaint g3 = new GradientPaint(0f, 50f, lightLeadBlue, 0f, 80f, Color.white);
 		   private GradientPaint g4 = new GradientPaint(0f, 50f, Color.white, 0f, 80f, lightLeadBlue);
+		   
+		   /* thread to execute commands asynchronously with respect to the GUI */
+		   ThreadFunction exit = () -> {
+			   System.exit(0);
+		   };
+		   ThreadFunction microvba = () -> {
+			   VectorGraphics g = null;
+			   try {
+				   g = new PPTGraphics2D(new File("macro.txt"), myself);
+			   } catch (FileNotFoundException e1) {
+				   // TODO Auto-generated catch block
+				   e1.printStackTrace();
+				   return;
+			   }
+			   nobardisplay = true;
+			   g.startExport();
+			   myself.print((Graphics) g);
+			   g.endExport();
+			   nobardisplay = false;
+			   stop();
+		   };		   
+		   Thread thread = null;
+		   ThreadFunction threadfunction = null;
+		   public void start() {
+			   if (thread == null ) {
+				   thread = new Thread(this);
+				   thread.start();
+			   }
+		   }
+		   public void stop() {
+			   thread = null;
+		   }
+		   public void run() {
+			   while (thread != null) {
+				   try {
+					   Thread.sleep(100);
+				   } catch (InterruptedException e) {}
+				   if (threadfunction != null) threadfunction.execute();
+			   }
+		   }
+		   /* end thread */
 		   
 		   public MyPanel() {
 			   pathexit = exitmsg();
@@ -96,24 +140,13 @@ public class Window  extends JFrame {
 					   repaint();
 				   }
 				   public void mouseReleased(MouseEvent e) {
-					   if (clicked == -1) return;
-					   
+					   if (clicked == -1) return; 
 					   repaint();
-					   if (clicked == 1) { System.exit(0); }
+					   if (clicked == 1) threadfunction = exit;
+					   else threadfunction = microvba;
 					   clicked = -1;
-					   VectorGraphics g = null;
-						try {
-							g = new PPTGraphics2D(new File("macro.txt"), myself);
-						} catch (FileNotFoundException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-							return;
-						}
-						nobardisplay = true;
-			            g.startExport();
-			            myself.print((Graphics) g);
-			            g.endExport();
-					    nobardisplay = false;
+					   start();
+					   repaint();
 				   }
 			   };
 			   addMouseListener(mouseListener);
@@ -121,7 +154,6 @@ public class Window  extends JFrame {
 		   Dimension dim;
 		   Path2D.Float pathexit;
 		   Path2D.Float pathMvba;
-		   BasicStroke thickwidth = new BasicStroke(3);
 		   public void paintComponent(Graphics g) {
 			   dim = getSize();
 			   if (g == null) return;
@@ -135,7 +167,6 @@ public class Window  extends JFrame {
 			   else g2.setPaint(g4);
 			   g.fillRoundRect(dim.width-200, 50, 180, 30, 12, 12);
 			   g.setColor(darkLeadBlue);
-			   
 			   g.translate(dim.width-190,8);
 			   g2.fill(pathMvba);
 			   g.translate(0,40);
