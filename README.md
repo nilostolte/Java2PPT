@@ -1,7 +1,7 @@
 # Java2PPT
 
 In this project, the Java vector information shown on the screen, such as a Graphics User interface, is
-automatically converted to PowerPoint by using a program in an intermediate language, which is run by our 
+automatically converted to PowerPoint by using a program in an intermediate language, which is run by my 
 [MicroVBA](https://github.com/nilostolte/MicroVBA-PowerPoint) interpreter 
 written in VBA to be used in PowerPoint in order to be able to import large vector graphics files. The information is
 written in a file containing the MicroVBA instructions that are read within a macro in the PowerPoint file
