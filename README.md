@@ -5,7 +5,7 @@ automatically converted to PowerPoint by using a program in an intermediate lang
 [MicroVBA](https://github.com/nilostolte/MicroVBA-PowerPoint) interpreter 
 written in VBA to be used in PowerPoint in order to be able to import large vector graphics files. The information is
 written in a file containing the MicroVBA instructions that are read within a macro in the PowerPoint file
-where the vector information is created using our MicroVBA interpreter that executes the instructions. MicroVBA language
+where the vector information is created using my MicroVBA interpreter that executes the instructions. MicroVBA language
 is a subset of VBA for PowerPoint. This language bypasses the weaknesses of the EMF format (the lack of
 gradient being the most handicapping) and of VBA itself (limitations on the size of functions) in order to import
 complete vector files from Java programs to PowerPoint.
